@@ -3,9 +3,9 @@
     {
       "anomalies": [
         {
-          "effectiveRadius": 0,
+          "effectiveRadius": 20,
           "id": "string",
-          "radius": 0,
+          "radius": 10,
           "strength": 0,
           "velocity": {
             "x": 1.2,
