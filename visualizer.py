@@ -25,8 +25,8 @@ class Visualizer:
 
     def draw_anomalies(self, anomalies_on_map):
         for anomaly in anomalies_on_map:
-            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"], self.rc.BLUE)
-            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], self.rc.DARK_BLUE)
+            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"],  0x90f700ff, True)
+            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], 0x2f0000ff, True)
             # draw velocity vector
             self.rc.line(anomaly["x"], anomaly["y"], anomaly["velocity"]['x'], anomaly["velocity"]['y'],
                          self.rc.DARK_BLUE)
