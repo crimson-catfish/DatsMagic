@@ -73,7 +73,7 @@ if len(sys.argv) == 2:
     print(log_file_name)
     f = open(log_file_name, "r", encoding="utf-8")
     log = json.load(f)
-    
+
     vs = Visualizer()
 
     for frame in log["frames"]:
