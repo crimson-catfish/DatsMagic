@@ -1,4 +1,9 @@
-import api, visualizer
+import api, logger
 from api import participate
 
-print(participate(test=True))
+current_round = api.rounds_info()["now"]
+logger = logger.Logger(current_round)
+
+frame = participate(test=True)
+
+    
