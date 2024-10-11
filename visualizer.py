@@ -2,6 +2,13 @@ import rewind_client, sys, os, json
 import math as m
 import random
 
+a = 32
+
+
+def draw_enemies(enemies_on_map):
+    for enemy in enemies_on_map:
+        rc.rectangle(enemy['x']*a, enemy['y']*a, enemy['x']*a + a, enemy['y']*a + a, rc.RED)
+
 
 def draw_anomalies(anomalies_on_map):
     for anomaly in anomalies_on_map:
