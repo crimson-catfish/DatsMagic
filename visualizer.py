@@ -25,10 +25,17 @@ class Visualizer:
 
     def draw_anomalies(self, anomalies_on_map):
         for anomaly in anomalies_on_map:
+            if anomaly["strength"] < 0:
+                color = 0x2f00ff0f
+            else:
+                color = 0x2f000fff
+                # Зеленые отталкивают, синие притягивают
             self.rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"],  0x90f700ff, True)
-            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], 0x2f0000ff, True)
+            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], color, True)
             # draw velocity vector
-            self.rc.line(anomaly["x"], anomaly["y"], anomaly["velocity"]['x'], anomaly["velocity"]['y'],
+            self.rc.line(anomaly["x"], anomaly["y"],
+                         anomaly["y"] + anomaly["velocity"]['x'],
+                         anomaly["y"] + anomaly["velocity"]['y'],
                          self.rc.DARK_BLUE)
 
     def draw_bounties(self, bounties):
