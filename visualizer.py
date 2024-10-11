@@ -70,7 +70,6 @@ class Visualizer:
 # python ./visualizer.py sample_log.json 
 if len(sys.argv) == 2:
     log_file_name = os.path.join("logs", sys.argv[1])
-    print(log_file_name)
     f = open(log_file_name, "r", encoding="utf-8")
     log = json.load(f)
 
