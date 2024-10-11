@@ -1,13 +1,15 @@
-import api, frame_logger
-from api import participate
+import api, frame_logger, visualizer
 
 current_round = api.rounds_info()["now"]
 logger = frame_logger.Logger(current_round)
+vs = visualizer.Visualizer()
 
-frame = participate(test=True)
+frame = api.participate(test=True)
 
-# while True:
-    # logger.log(frame)
+while True:
+    logger.log(frame)
+    vs.draw_frame(frame)
+    frame = api.participate()
 
     # process frame
     
