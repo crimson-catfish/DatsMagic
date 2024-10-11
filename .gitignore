@@ -2,7 +2,6 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=pycharm,python,linux,windows
 
 ### Custom ###
-logs/*
 
 ### Linux ###
 *~
