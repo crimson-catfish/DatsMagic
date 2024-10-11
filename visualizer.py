@@ -36,10 +36,17 @@ class Visualizer:
 
     def draw_anomalies(self, anomalies_on_map):
         for anomaly in anomalies_on_map:
-            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"], self.rc.BLUE)
-            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], self.rc.DARK_BLUE)
+            if anomaly["strength"] < 0:
+                color = 0x2f00ff0f
+            else:
+                color = 0x2f000fff
+                # Зеленые отталкивают, синие притягивают
+            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"],  0x90f700ff, True)
+            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], color, True)
             # draw velocity vector
-            self.rc.line(anomaly["x"], anomaly["y"], anomaly["velocity"]['x'], anomaly["velocity"]['y'],
+            self.rc.line(anomaly["x"], anomaly["y"],
+                         anomaly["y"] + anomaly["velocity"]['x'],
+                         anomaly["y"] + anomaly["velocity"]['y'],
                          self.rc.DARK_BLUE)
 
     def draw_bounties(self, bounties):
@@ -83,7 +90,6 @@ class Visualizer:
 # python ./visualizer.py sample_log.json 
 if len(sys.argv) == 2:
     log_file_name = os.path.join("logs", sys.argv[1])
-    print(log_file_name)
     f = open(log_file_name, "r", encoding="utf-8")
     log = json.load(f)
 
