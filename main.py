@@ -1,5 +1,4 @@
-import api, frame_logger, visualizer, rounds_utility
-import error_checker
+import api, frame_logger, visualizer, error_checker, strategy
 
 test_or_not = True
 
@@ -24,11 +23,8 @@ while True:
 
     logger.log(frame)
     vs.draw_frame(frame)
-    frame = api.participate(test_or_not)
 
-    # process frame
-    
-    # command = ???
-    
-    # frame = api.send_command(command)
-    
+    # TODO: test this
+    command = strategy.commander.process_all_transports(frame)
+
+    frame = api.send_command(command)
