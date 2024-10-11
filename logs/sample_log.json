@@ -1,52 +1,93 @@
 {
-  "frames": [
+  "anomalies": [
     {
-      "blocks": [
-        {
-          "x": 0,
-          "y": 0
-        },
-        {
-          "x": 1,
-          "y": 0
-        }
-      ],
-      "enemies": [
-        {
-          "x": 0,
-          "y": 0,
-          "type": "O Negative"
-        },
-        {
-          "x": 1,
-          "y": 0,
-          "type": "pam-param"
-        }
-      ]
-    },
+      "effectiveRadius": 0,
+      "id": "string",
+      "radius": 0,
+      "strength": 0,
+      "velocity": {
+        "x": 1.2,
+        "y": 1.2
+      },
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "attackCooldownMs": 1000,
+  "attackDamage": 10,
+  "attackExplosionRadius": 10,
+  "attackRange": 10,
+  "bounties": [
     {
-      "blocks": [
-        {
-          "x": 0,
-          "y": 1
-        },
-        {
-          "x": 1,
-          "y": 1
-        }
-      ],
-      "enemies": [
-        {
-          "x": 0,
-          "y": -1,
-          "type": "O Negative"
-        },
-        {
-          "x": 1,
-          "y": -1,
-          "type": "pam-param"
-        }
-      ]
+      "points": 100,
+      "radius": 10,
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "enemies": [
+    {
+      "health": 100,
+      "killBounty": 10,
+      "shieldLeftMs": 5000,
+      "status": "alive",
+      "velocity": {
+        "x": 1.2,
+        "y": 1.2
+      },
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "mapSize": {
+    "x": 1,
+    "y": 1
+  },
+  "maxAccel": 1,
+  "maxSpeed": 10,
+  "name": "player1",
+  "points": 100,
+  "reviveTimeoutSec": 2,
+  "shieldCooldownMs": 10000,
+  "shieldTimeMs": 5000,
+  "transportRadius": 5,
+  "transports": [
+    {
+      "anomalyAcceleration": {
+        "x": 1.2,
+        "y": 1.2
+      },
+      "attackCooldownMs": 0,
+      "deathCount": 0,
+      "health": 100,
+      "id": "00000000-0000-0000-0000-000000000000",
+      "selfAcceleration": {
+        "x": 1.2,
+        "y": 1.2
+      },
+      "shieldCooldownMs": 0,
+      "shieldLeftMs": 0,
+      "status": "alive",
+      "velocity": {
+        "x": 1.2,
+        "y": 1.2
+      },
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "wantedList": [
+    {
+      "health": 100,
+      "killBounty": 10,
+      "shieldLeftMs": 5000,
+      "status": "alive",
+      "velocity": {
+        "x": 1.2,
+        "y": 1.2
+      },
+      "x": 1,
+      "y": 1
     }
   ]
 }
