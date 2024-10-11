@@ -16,7 +16,6 @@ def draw_anomalies(anomalies_on_map):
     for anomaly in anomalies_on_map:
         rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"], rc.BLUE)
         rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], rc.DARK_BLUE)
-
         # draw velocity vector
         rc.line(anomaly["x"], anomaly["y"], anomaly["velocity"]['x'], anomaly["velocity"]['y'], rc.DARK_BLUE)
 
@@ -24,6 +23,14 @@ def draw_anomalies(anomalies_on_map):
 def draw_bounties(bounties):
     for bounty in bounties:
         rc.circle(bounty["x"], bounty["y"], bounty["radius"], rc.DARK_GREEN)
+
+
+ def draw_transports(transports_on_map):
+    for transport in transports_on_map:
+        rc.rectangle(transport["velocity"]['x'], transport["velocity"]['y'],
+                     transport["velocity"]['x']+1, transport["velocity"]['y']+1,rc.GREEN)
+        # draw velocity vector
+        rc.line(transport["x"], transport["y"], transport["velocity"]['x'], transport["velocity"]['y'], rc.GREEN)
 
 
 rc = rewind_client.RewindClient()
