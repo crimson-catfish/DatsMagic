@@ -2,10 +2,10 @@ import json
 
 import requests
 
-token = "somethinglike1234"
+token = "66fbdc38b2e2466fbdc38b2e27 "
 url_main = "https://games.datsteam.dev/"
 url_test = "https://games-test.datsteam.dev/"
-game_name = "probablymagic"
+game_name = "magcarp"
 auth_header = {"X-Auth-Token": token}
 
 url = url_test
