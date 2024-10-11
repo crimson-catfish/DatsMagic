@@ -2,7 +2,7 @@ import rewind_client, sys, os, json
 import math as m
 import random
 
-a = 32
+a = 1
 
 
 def draw_enemies(enemies_on_map):
