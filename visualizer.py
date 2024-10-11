@@ -19,7 +19,13 @@ if len(sys.argv) == 2:
         rc.end_frame()
 
 # something like blocks
-def draw_group_of_things():
+def draw_anomalies(anomalies_on_map):
+    for i in anomalies_on_map:
+        rc.circle(anomalies_on_map[i]["x"], anomalies_on_map[i]["y"],
+                  anomalies_on_map[i]["radius"], rc.BLUE)
+
+        rc.circle(anomalies_on_map[i]["x"], anomalies_on_map[i]["y"],
+                  anomalies_on_map[i]["radius"], rc.BLUE)
     # rc.
     pass
 
@@ -30,9 +36,8 @@ def draw_group_of_other_things():
 
 
 def draw_bounties(bounties_on_map):
-    for i in bounties_on_map:
+    for i in range(bounties_on_map):
         rc.circle(bounties_on_map[i]["x"], bounties_on_map[i]["y"], bounties_on_map[i]["radius"], rc.DARK_GREEN)
-
 
 
 
