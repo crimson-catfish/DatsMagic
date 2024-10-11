@@ -21,7 +21,7 @@ def participate(test=False):
     req = {"transports": []}
 
     return json.loads(
-        requests.post(url + "play/" + game_name + "/participate", headers=auth_header, json=req).content.decode(
+        requests.post(url + "play/" + game_name + "/player/move", headers=auth_header, json=req).content.decode(
             'utf-8'))
 
 
