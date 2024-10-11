@@ -22,7 +22,7 @@ def process_all_transports(frame: dict) -> list:
         if attack is not None:
             transport_command["attack"] = attack
 
-        acceleration = move.acceletation(frame, transport, enemies_nearby_transport)
+        acceleration = move.acceleration(frame, transport, enemies_nearby_transport)
         if acceleration is not None:
             transport_command["acceleration"] = acceleration
 
