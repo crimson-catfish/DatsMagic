@@ -2,6 +2,8 @@ import rewind_client, sys, os, json
 import math as m
 import random
 
+a = 32 #for rectangle
+
 rc = rewind_client.RewindClient()
 input()
 
@@ -22,19 +24,22 @@ if len(sys.argv) == 2:
 # something like blocks
 def draw_anomalies(anomalies_on_map):
     for i in anomalies_on_map:
-        rc.circle(i["x"], i["y"], i["radius"], rc.BLUE)
-        rc.circle(i["x"], i["y"], i["effectiveRadius"], rc.DARK_BLUE)
+        rc.circle(i["x"]*a, i["y"]*a, i["radius"]*a, rc.BLUE)
+        rc.circle(i["x"]*a, i["y"]*a, i["effectiveRadius"]*a, rc.DARK_BLUE)
     pass
 
+
 # something like enemies
-def draw_group_of_other_things():
+def draw_enemies(enemies_on_map):
+    for i in enemies_on_map:
+        rc.rectangle(i['x']*a, i['y']*a, i['x']*a + a, i['y']*a + a, rc.RED)
     # rc.
     pass
 
 
 def draw_bounties(bounties_on_map):
     for i in bounties_on_map:
-        rc.circle(bounties_on_map[i]["x"], bounties_on_map[i]["y"], bounties_on_map[i]["radius"], rc.DARK_GREEN)
+        rc.circle(i["x"]*a, i["y"]*a, i["radius"]*a, rc.DARK_GREEN)
 
 
 
