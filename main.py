@@ -1,6 +1,7 @@
 import api, frame_logger, visualizer
 
-current_round = api.rounds_info()["now"]
+rounds_info = api.rounds_info()
+current_round = rounds_info["now"]
 logger = frame_logger.Logger(current_round)
 vs = visualizer.Visualizer()
 
