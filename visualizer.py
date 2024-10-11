@@ -15,6 +15,9 @@ def draw_anomalies(anomalies_on_map):
         rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"], rc.BLUE)
         rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], rc.DARK_BLUE)
 
+        # draw velocity vector
+        rc.line(anomaly["x"], anomaly["y"], anomaly["velocity"]['x'], anomaly["velocity"]['y'], rc.DARK_BLUE)
+
 
 def draw_bounties(bounties):
     for bounty in bounties:
