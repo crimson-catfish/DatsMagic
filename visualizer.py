@@ -8,6 +8,8 @@ a = 32
 def draw_enemies(enemies_on_map):
     for enemy in enemies_on_map:
         rc.rectangle(enemy['x']*a, enemy['y']*a, enemy['x']*a + a, enemy['y']*a + a, rc.RED)
+        # draw velocity vector
+        rc.line(enemy["x"], enemy["y"], enemy["velocity"]['x'], enemy["velocity"]['y'], rc.DARK_RED)
 
 
 def draw_anomalies(anomalies_on_map):
