@@ -4,10 +4,9 @@ import random
 
 
 def draw_anomalies(anomalies_on_map):
-    for i in anomalies_on_map:
-        rc.circle(i["x"], i["y"], i["radius"], rc.BLUE)
-        rc.circle(i["x"], i["y"], i["effectiveRadius"], rc.DARK_BLUE)
-    pass
+    for anomaly in anomalies_on_map:
+        rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"], rc.BLUE)
+        rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], rc.DARK_BLUE)
 
 
 def draw_bounties(bounties):
