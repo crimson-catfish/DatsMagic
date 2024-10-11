@@ -18,7 +18,7 @@ def process_all_transports(frame: dict) -> list:
         if shield.needed(enemies_nearby_transport, transport):
             transport_command["activateShield"] = True
 
-        attack = attacker.aim_one_target(frame, transport, enemies_nearby_transport)
+        attack = attacker.aim_one_hit(frame, transport, enemies_nearby_transport)
         if attack is not None:
             transport_command["attack"] = attack
 

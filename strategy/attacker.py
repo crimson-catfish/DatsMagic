@@ -1,8 +1,9 @@
 import math
 
 
-# simplest aim - hit enemy and don't shoot yourself
-def aim_one_target(frame: dict, transport: dict, enemies_nearby: list):
+# simplest aim - hit low hp enemy and don't shoot yourself
+# TODO: make it's copy and implement more complicated aim strategy like shooting someone more than one hit hp, and taking bounty to credit 
+def aim_one_hit(frame: dict, transport: dict, enemies_nearby: list):
     if transport["attackCooldownMs"] > 0:
         return None
 
@@ -11,18 +12,23 @@ def aim_one_target(frame: dict, transport: dict, enemies_nearby: list):
             continue
 
         if enemy_nearby["enemy"]["health"] <= frame["attackDamage"]:
-            if enemy_nearby["sqr_distance"] > frame["attackExplosionRadius"]:
-                return {"x": enemy_nearby["enemy"]["x"], "y": enemy_nearby["enemy"]["y"]}
+            # if enemy too close
+            if enemy_nearby["sqr_distance"] <= frame["attackExplosionRadius"] ** 2:
+                # all below is to avoid shooting self
+                direction = {"x": enemy_nearby["enemy"]["x"] - transport["x"],
+                             "y": enemy_nearby["enemy"]["y"] - transport["y"]}
 
-            direction = {"x": enemy_nearby["enemy"]["x"] - transport["x"],
-                         "y": enemy_nearby["enemy"]["y"] - transport["y"]}
+                magnitude = math.sqrt(direction["x"] ** 2 + direction["y"] ** 2)
 
-            magnitude = math.sqrt(direction["x"] ** 2 + direction["y"] ** 2)
+                normalized_direction = {"x": direction["x"] / magnitude,
+                                        "y": direction["y"] / magnitude}
 
-            normalized_direction = {"x": direction["x"] / magnitude,
-                                    "y": direction["y"] / magnitude}
+                return {"x": transport["x"] + normalized_direction["x"] * enemy_nearby["sqr_distance"] * 1.01,
+                        "y": transport["y"] + normalized_direction["y"] * enemy_nearby["sqr_distance"] * 1.01}
 
-            return {"x": transport["x"] + normalized_direction["x"] * enemy_nearby["sqr_distance"],
-                    "y": transport["y"] + normalized_direction["y"] * enemy_nearby["sqr_distance"]}
+            # if enemy too far
+            if enemy_nearby["sqr_distance"] > frame["attackRange"] ** 2:
+                # TODO: don't try to shoot further than we can. try to hit enemy with explosion area instead 
+                return None
 
-        return None
+            return {"x": enemy_nearby["enemy"]["x"], "y": enemy_nearby["enemy"]["y"]}
