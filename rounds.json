@@ -1,0 +1,118 @@
+{
+  "gameName": "magcarp-test",
+  "rounds": [
+    {
+      "name": "test-endless",
+      "startAt": "2024-10-12T17:00:00Z",
+      "endAt": "2024-10-12T18:00:00Z",
+      "duration": 3600,
+      "status": "not started",
+      "repeat": 1000
+    },
+    {
+      "name": "test-day2-10",
+      "startAt": "2024-10-12T16:00:00Z",
+      "endAt": "2024-10-12T16:55:00Z",
+      "duration": 3300,
+      "status": "not started",
+      "repeat": 0
+    },
+    {
+      "name": "test-day2-9",
+      "startAt": "2024-10-12T15:00:00Z",
+      "endAt": "2024-10-12T15:55:00Z",
+      "duration": 3300,
+      "status": "not started",
+      "repeat": 0
+    },
+    {
+      "name": "test-day2-8",
+      "startAt": "2024-10-12T14:00:00Z",
+      "endAt": "2024-10-12T14:55:00Z",
+      "duration": 3300,
+      "status": "not started",
+      "repeat": 0
+    },
+    {
+      "name": "test-day2-7",
+      "startAt": "2024-10-12T13:00:00Z",
+      "endAt": "2024-10-12T13:55:00Z",
+      "duration": 3300,
+      "status": "not started",
+      "repeat": 0
+    },
+    {
+      "name": "test-day2-6",
+      "startAt": "2024-10-12T12:00:00Z",
+      "endAt": "2024-10-12T12:55:00Z",
+      "duration": 3300,
+      "status": "not started",
+      "repeat": 0
+    },
+    {
+      "name": "test-day2-5",
+      "startAt": "2024-10-12T11:00:00Z",
+      "endAt": "2024-10-12T11:55:00Z",
+      "duration": 3300,
+      "status": "not started",
+      "repeat": 0
+    },
+    {
+      "name": "test-day2-4",
+      "startAt": "2024-10-12T10:00:00Z",
+      "endAt": "2024-10-12T10:55:00Z",
+      "duration": 3300,
+      "status": "not started",
+      "repeat": 0
+    },
+    {
+      "name": "test-day2-3",
+      "startAt": "2024-10-12T09:00:00Z",
+      "endAt": "2024-10-12T09:55:00Z",
+      "duration": 3300,
+      "status": "not started",
+      "repeat": 0
+    },
+    {
+      "name": "test-day2-2",
+      "startAt": "2024-10-12T08:00:00Z",
+      "endAt": "2024-10-12T08:55:00Z",
+      "duration": 3300,
+      "status": "not started",
+      "repeat": 0
+    },
+    {
+      "name": "test-day2-1",
+      "startAt": "2024-10-12T07:00:00Z",
+      "endAt": "2024-10-12T07:55:00Z",
+      "duration": 3300,
+      "status": "not started",
+      "repeat": 0
+    },
+    {
+      "name": "test-day1-3",
+      "startAt": "2024-10-11T18:00:00Z",
+      "endAt": "2024-10-11T18:55:00Z",
+      "duration": 3300,
+      "status": "not started",
+      "repeat": 0
+    },
+    {
+      "name": "test-day1-2",
+      "startAt": "2024-10-11T17:00:00Z",
+      "endAt": "2024-10-11T17:55:00Z",
+      "duration": 3300,
+      "status": "ended",
+      "repeat": 0
+    },
+    {
+      "name": "test-day1-1",
+      "startAt": "2024-10-11T16:00:00Z",
+      "endAt": "2024-10-11T16:55:00Z",
+      "duration": 3300,
+      "status": "ended",
+      "repeat": 0
+    }
+  ],
+  "now": "2024-10-11T17:58:41.652028437Z"
+}
