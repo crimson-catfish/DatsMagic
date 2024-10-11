@@ -45,7 +45,7 @@ class Visualizer:
             self.rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], color, True)
             # draw velocity vector
             self.rc.line(anomaly["x"], anomaly["y"],
-                         anomaly["y"] + anomaly["velocity"]['x'],
+                         anomaly["x"] + anomaly["velocity"]['x'],
                          anomaly["y"] + anomaly["velocity"]['y'],
                          self.rc.DARK_BLUE)
 
