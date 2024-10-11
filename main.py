@@ -16,7 +16,7 @@ print("connecting to logger")
 logger = frame_logger.Logger(current_round)
 
 print("connecting to visualizer")
-vs = visualizer.Visualizer()
+vs = visualizer.Visualizer(frame["mapSize"])
 
 while True:
     if not error_checker.ok(frame):

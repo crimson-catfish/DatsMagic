@@ -2,16 +2,22 @@ import rewind_client, sys, os, json
 
 CARPET_SIZE = 5
 
+
 def clamp(val, a, b):
     if val < a:
         val = a
     elif val > b:
         val = b
-    
+
     return val
 
+
 class Visualizer:
-    rc = rewind_client.RewindClient()
+    def __init__(self, map_size: dict):
+        self.rc = rewind_client.RewindClient()
+        self.rc.set_options(layer=1, permanent=True)
+        self.rc.rectangle(0, 0, map_size["x"], map_size["y"], self.rc.BACKGROUND, fill=True)
+        self.rc.end_frame()
 
     def draw_enemies(self, enemies_on_map, transport_radius):
         for enemy in enemies_on_map:
@@ -31,7 +37,7 @@ class Visualizer:
             else:
                 color = 0x2f000fff
                 # Зеленые отталкивают, синие притягивают
-            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"],  0x90f700ff, True)
+            self.rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"], 0x90f700ff, True)
             self.rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], color, True)
             # draw velocity vector
             self.rc.line(anomaly["x"], anomaly["y"],
@@ -45,7 +51,6 @@ class Visualizer:
 
     def draw_transports(self, transports_on_map, transport_radius, attack_radius):
         for transport in transports_on_map:
-
             # calculate transport direction
             x_dir = transport["velocity"]['x']
             y_dir = transport["velocity"]['y']
@@ -58,12 +63,13 @@ class Visualizer:
 
             # draw shoot radius
             self.rc.circle(transport['x'], transport['y'], attack_radius, self.rc.GREEN)
-    
+
     def draw_frame(self, frame_to_draw: dict):
         self.draw_bounties(frame_to_draw["bounties"])
         self.draw_anomalies(frame_to_draw["anomalies"])
         self.draw_enemies(frame_to_draw["enemies"], frame_to_draw["transportRadius"])
-        self.draw_transports(frame_to_draw["transports"], frame_to_draw["transportRadius"], frame_to_draw["attackRange"])
+        self.draw_transports(frame_to_draw["transports"], frame_to_draw["transportRadius"],
+                             frame_to_draw["attackRange"])
 
         self.rc.end_frame()
 
@@ -76,7 +82,7 @@ if len(sys.argv) == 2:
     f = open(log_file_name, "r", encoding="utf-8")
     log = json.load(f)
 
-    vs = Visualizer()
+    vs = Visualizer(log["frames"][0]["mapSize"])
 
     for frame in log["frames"]:
         vs.draw_frame(frame)
