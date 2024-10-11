@@ -10,9 +10,9 @@ def draw_anomalies(anomalies_on_map):
     pass
 
 
-def draw_bounties(bounties_on_map):
-    for i in bounties_on_map:
-        rc.circle(bounties_on_map[i]["x"], bounties_on_map[i]["y"], bounties_on_map[i]["radius"], rc.DARK_GREEN)
+def draw_bounties(bounties):
+    for bounty in bounties:
+        rc.circle(bounty["x"], bounty["y"], bounty["radius"], rc.DARK_GREEN)
 
 
 rc = rewind_client.RewindClient()
