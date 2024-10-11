@@ -1,6 +1,9 @@
 import rewind_client, sys, os, json
+import math as m
+import random
 
 rc = rewind_client.RewindClient()
+input()
 
 # draw from file if file name was provided in args
 if len(sys.argv) == 2:
@@ -21,3 +24,12 @@ def draw_group_of_things():
 def draw_group_of_other_things():
     # rc.
     pass
+
+
+def draw_bounties(bounties_on_map):
+    for i in bounties_on_map:
+        rc.circle(bounties_on_map[i]["x"], bounties_on_map[i]["y"], bounties_on_map[i]["radius"], rc.DARK_GREEN)
+
+
+
+
