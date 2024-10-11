@@ -31,5 +31,5 @@ def rounds_info():
 
 def send_command(command: dict):
     return json.loads(
-        requests.post(url + "play/" + game_name + "/command", headers=auth_header, json=command).content.decode(
+        requests.post(url + "play/" + game_name + "/player/move", headers=auth_header, json=command).content.decode(
             'utf-8'))
