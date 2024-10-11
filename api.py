@@ -18,15 +18,18 @@ def participate(test=False):
     else:
         url = url_main
 
+    req = {"transports": []}
+
     return json.loads(
-        requests.put(url + "play/" + game_name + "/participate", headers=auth_header).content.decode('utf-8'))
+        requests.post(url + "play/" + game_name + "/participate", headers=auth_header, json=req).content.decode(
+            'utf-8'))
 
 
-def get_rounds():
-    return json.loads(requests.get(url + "rounds/" + game_name + "", headers=auth_header).content.decode('utf-8'))
+def rounds_info():
+    return json.loads(requests.get(url + "rounds/" + game_name, headers=auth_header).content.decode('utf-8'))
 
 
 def send_command(command: dict):
     return json.loads(
-        requests.post(url + "play/" + game_name + "/command", headers=auth_header, json=command).content.decode(
+        requests.post(url + "play/" + game_name + "/player/move", headers=auth_header, json=command).content.decode(
             'utf-8'))
