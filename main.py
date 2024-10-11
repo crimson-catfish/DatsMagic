@@ -5,7 +5,13 @@ current_round = api.rounds_info()["now"]
 logger = frame_logger.Logger(current_round)
 
 frame = participate(test=True)
-logger.log(frame)
-logger.log(frame)
 
+# while True:
+    # logger.log(frame)
+
+    # process frame
+    
+    # command = ???
+    
+    # frame = api.send_command(command)
     
