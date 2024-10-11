@@ -3,7 +3,7 @@ import json
 
 class Logger:
     def __init__(self, current_round: str):
-        self.file = open("logs/round" + current_round + ".json", 'w+')
+        self.file = open("logs/round" + current_round.replace(":", ".") + ".json", 'w+')
         self.file.write("{\"frames\": [\n")
 
     def log(self, frame_data: dict):
