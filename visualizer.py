@@ -14,8 +14,8 @@ def draw_enemies(enemies_on_map):
 
 def draw_anomalies(anomalies_on_map):
     for anomaly in anomalies_on_map:
-        rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"], rc.BLUE)
-        rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], rc.DARK_BLUE)
+        rc.circle(anomaly["x"], anomaly["y"], anomaly["radius"], 0x90f700ff, True)
+        rc.circle(anomaly["x"], anomaly["y"], anomaly["effectiveRadius"], 0x2f0000ff, True)
         # draw velocity vector
         rc.line(anomaly["x"], anomaly["y"], anomaly["velocity"]['x'], anomaly["velocity"]['y'], rc.DARK_BLUE)
 
