@@ -25,8 +25,8 @@ def participate(test=False):
             'utf-8'))
 
 
-def get_rounds():
-    return json.loads(requests.get(url + "rounds/" + game_name + "", headers=auth_header).content.decode('utf-8'))
+def rounds_info():
+    return json.loads(requests.get(url + "rounds/" + game_name, headers=auth_header).content.decode('utf-8'))
 
 
 def send_command(command: dict):
