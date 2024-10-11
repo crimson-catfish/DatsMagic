@@ -27,5 +27,6 @@ if len(sys.argv) == 2:
 
     for frame in log["frames"]:
         draw_bounties(frame["bounties"])
-
+        draw_anomalies(frame["anomalies"])
+        
         rc.end_frame()
