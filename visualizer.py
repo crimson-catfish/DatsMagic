@@ -15,12 +15,15 @@ if len(sys.argv) == 2:
 
     for frame in log["frames"]:
         # draw_bounties(frame["bounties"])
-        
+
         rc.end_frame()
 
+
 # something like blocks
-def draw_group_of_things():
-    # rc.
+def draw_anomalies(anomalies_on_map):
+    for i in anomalies_on_map:
+        rc.circle(i["x"], i["y"], i["radius"], rc.BLUE)
+        rc.circle(i["x"], i["y"], i["effectiveRadius"], rc.DARK_BLUE)
     pass
 
 # something like enemies
