@@ -41,7 +41,7 @@ class Visualizer:
 
     def draw_bounties(self, bounties):
         for bounty in bounties:
-            self.rc.circle(bounty["x"], bounty["y"], bounty["radius"], self.rc.DARK_GREEN)
+            self.rc.circle(bounty["x"], bounty["y"], bounty["radius"], self.rc.GOLD, True)
 
     def draw_transports(self, transports_on_map, transport_radius, attack_radius):
         for transport in transports_on_map:
