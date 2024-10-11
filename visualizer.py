@@ -25,7 +25,7 @@ def draw_bounties(bounties):
         rc.circle(bounty["x"], bounty["y"], bounty["radius"], rc.DARK_GREEN)
 
 
- def draw_transports(transports_on_map):
+def draw_transports(transports_on_map):
     for transport in transports_on_map:
         rc.rectangle(transport["velocity"]['x'], transport["velocity"]['y'],
                      transport["velocity"]['x']+1, transport["velocity"]['y']+1,rc.GREEN)
@@ -48,5 +48,6 @@ if len(sys.argv) == 2:
         draw_bounties(frame["bounties"])
         draw_anomalies(frame["anomalies"])
         draw_enemies(frame["enemies"])
+        draw_transports(frame["transports"])
         
         rc.end_frame()

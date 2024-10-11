@@ -1,6 +1,7 @@
 import _socket
 import json
 
+
 class RewindClient():
     RED = 0xff0000
     GREEN = 0x00ff00
