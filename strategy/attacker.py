@@ -25,19 +25,20 @@ def aim_one_hit(frame: dict, transport: dict, enemies_nearby: list):
     if target_nearby is None:
         return None
 
+    direction = {"x": target_nearby["enemy"]["x"] - transport["x"],
+                 "y": target_nearby["enemy"]["y"] - transport["y"]}
+
+    magnitude = math.sqrt(direction["x"] ** 2 + direction["y"] ** 2)
+
+    normalized_direction = {"x": direction["x"] / magnitude,
+                            "y": direction["y"] / magnitude}
+
     # if enemy too close
     if target_nearby["sqr_distance"] <= frame["attackExplosionRadius"] ** 2:
         # all below is to avoid shooting self
-        direction = {"x": target_nearby["enemy"]["x"] - transport["x"],
-                     "y": target_nearby["enemy"]["y"] - transport["y"]}
 
-        magnitude = math.sqrt(direction["x"] ** 2 + direction["y"] ** 2)
-
-        normalized_direction = {"x": direction["x"] / magnitude,
-                                "y": direction["y"] / magnitude}
-
-        return {"x": int(transport["x"] + normalized_direction["x"] * target_nearby["sqr_distance"] * 1.01),
-                "y": int(transport["y"] + normalized_direction["y"] * target_nearby["sqr_distance"] * 1.01)}
+        return {"x": int(transport["x"] + normalized_direction["x"] * frame["attackExplosionRadius"] * 1.01),
+                "y": int(transport["y"] + normalized_direction["y"] * frame["attackExplosionRadius"] * 1.01)}
 
     # if enemy too far
     if target_nearby["sqr_distance"] > frame["attackRange"] ** 2:
