@@ -57,11 +57,11 @@ class Visualizer:
         for transport in transports:
             self.rc.circle_popup(transport['x'],
                                  transport['y'],
-                                 50, "health: " + str(transport["health"]))
+                                 50, "ally health: " + str(transport["health"]))
         for enemy in enemies:
             self.rc.circle_popup(enemy['x'],
                                  enemy['y'],
-                                 50, "health: " + str(enemy["health"]))
+                                 50, "enemy health: " + str(enemy["health"]))
 
     def draw_constants(self, frame):
         self.rc.message("maxAccel" + ': ' + str(frame["maxAccel"]))
