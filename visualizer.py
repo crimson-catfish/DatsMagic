@@ -63,7 +63,14 @@ class Visualizer:
                                  enemy['y'],
                                  50, "health: " + str(enemy["health"]))
 
+    def draw_constants(self, frame):
+        self.rc.message("maxAccel" + ': ' + str(frame["maxAccel"]))
+        self.rc.message("maxSpeed" + ': ' + str(frame["maxSpeed"]))
+        self.rc.message("points" + ': ' + str(frame["points"]))
+
+
     def draw_frame(self, frame_to_draw: dict):
+        self.draw_constants(frame_to_draw)
         self.draw_hp(frame_to_draw["transports"], frame_to_draw["enemies"])
         self.draw_bounties(frame_to_draw["bounties"])
         self.draw_anomalies(frame_to_draw["anomalies"])
