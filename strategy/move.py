@@ -1,5 +1,6 @@
 import math
 
+import anomaly_finder
 from strategy import bounty_finder
 
 
@@ -25,6 +26,10 @@ def acceleration(frame: dict, transport: dict, enemies_nearby: list):
     if bounty_for_transport[transport["id"]]['x'] is not None:
         accel['x'] = bounty_for_transport[transport["id"]]['x'] - transport['x'] - transport["velocity"]["x"]
         accel['y'] = bounty_for_transport[transport["id"]]['y'] - transport['y'] - transport["velocity"]["y"]
+        
+    anomalies_on_the_way = anomaly_finder.get_anomalies_on_the_way(frame, transport)
+    if anomalies_on_the_way is not None:
+        pass
 
     # cancel anomaly effects
     accel['x'] -= transport["anomalyAcceleration"]['x']
