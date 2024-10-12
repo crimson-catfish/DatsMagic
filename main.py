@@ -24,9 +24,12 @@ while True:
     if len(frame["errors"]) > 0:
         print(frame["errors"])
 
+    # print("logging...")
     logger.log(frame)
     vs.draw_frame(frame)
 
+    # print("calculating strategy...")
     command = strategy.commander.process_all_transports(frame)
 
+    # print("waiting for api...")
     frame = api.send_command(command)
