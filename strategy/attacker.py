@@ -36,12 +36,12 @@ def aim_one_hit(frame: dict, transport: dict, enemies_nearby: list):
         normalized_direction = {"x": direction["x"] / magnitude,
                                 "y": direction["y"] / magnitude}
 
-        return {"x": transport["x"] + normalized_direction["x"] * target_nearby["sqr_distance"] * 1.01,
-                "y": transport["y"] + normalized_direction["y"] * target_nearby["sqr_distance"] * 1.01}
+        return {"x": int(transport["x"] + normalized_direction["x"] * target_nearby["sqr_distance"] * 1.01),
+                "y": int(transport["y"] + normalized_direction["y"] * target_nearby["sqr_distance"] * 1.01)}
 
     # if enemy too far
     if target_nearby["sqr_distance"] > frame["attackRange"] ** 2:
         # TODO: don't try to shoot further than we can. try to hit enemy with explosion area instead 
         return None
 
-    return {"x": target_nearby["enemy"]["x"], "y": target_nearby["enemy"]["y"]}
+    return {"x": int(target_nearby["enemy"]["x"]), "y": int(target_nearby["enemy"]["y"])}
