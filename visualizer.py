@@ -64,23 +64,24 @@ class Visualizer:
             # draw shoot radius
             self.rc.circle(transport['x'], transport['y'], attack_radius, self.rc.GREEN)
 
-
-    def draw_hp(self, transports):
+    def draw_hp(self, transports, enemies):
         for transport in transports:
             self.rc.circle_popup(transport['x'],
                                  transport['y'],
                                  50, "health: " + str(transport["health"]))
+        for enemy in enemies:
+            self.rc.circle_popup(enemy['x'],
+                                 enemy['y'],
+                                 50, "health: " + str(enemy["health"]))
 
     def draw_frame(self, frame_to_draw: dict):
-        self.draw_hp(frame_to_draw["transports"])
+        self.draw_hp(frame_to_draw["transports"], frame_to_draw["enemies"])
         self.draw_bounties(frame_to_draw["bounties"])
         self.draw_anomalies(frame_to_draw["anomalies"])
         self.draw_enemies(frame_to_draw["enemies"], frame_to_draw["transportRadius"])
         self.draw_transports(frame_to_draw["transports"], frame_to_draw["transportRadius"],
                              frame_to_draw["attackRange"])
-
         self.rc.end_frame()
-
 
 # draw from file if file name was provided in args
 # to test this run rewind-viewer app, than:
