@@ -50,6 +50,17 @@ class Visualizer:
             self.rc.line(transport["x"], transport["y"], transport["x"] + x_dir, transport['y'] + y_dir,
                          self.rc.GREEN)
 
+            # draw anomalyAcceleration vector
+            self.rc.line(transport['x'], transport['y'],
+                         transport['x'] + transport["anomalyAcceleration"]['x'],
+                         transport['y'] + transport["anomalyAcceleration"]['y'],
+                         self.rc.RED)
+
+            # draw selfAcceleration vector
+            self.rc.line(transport['x'], transport['y'],
+                         transport['x'] + transport["selfAcceleration"]['x'],
+                         transport['y'] + transport["selfAcceleration"]['y'],
+                         self.rc.DARK_BLUE)
             # draw shoot radius
             self.rc.circle(transport['x'], transport['y'], attack_radius, self.rc.GREEN)
 
