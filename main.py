@@ -21,10 +21,12 @@ while True:
     if not error_checker.ok(frame):
         break
 
+    if len(frame["errors"]) > 0:
+        print(frame["errors"])
+
     logger.log(frame)
     vs.draw_frame(frame)
 
     command = strategy.commander.process_all_transports(frame)
 
     frame = api.send_command(command)
-    print(frame["errors"])

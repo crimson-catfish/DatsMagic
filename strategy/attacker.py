@@ -40,7 +40,7 @@ def aim_one_hit(frame: dict, transport: dict, enemies_nearby: list):
 
     # if enemy too far
     if target_nearby["sqr_distance"] > frame["attackRange"] ** 2:
-        return {"x": int(transport["x"] + normalized_direction["x"] * frame["attackRange"] * 0.99),
-                "y": int(transport["y"] + normalized_direction["y"] * frame["attackRange"] * 0.99)}
+        return {"x": int(transport["x"] + normalized_direction["x"] * frame["attackRange"] * 0.9),
+                "y": int(transport["y"] + normalized_direction["y"] * frame["attackRange"] * 0.9)}
 
     return {"x": int(target_nearby["enemy"]["x"]), "y": int(target_nearby["enemy"]["y"])}
