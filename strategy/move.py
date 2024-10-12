@@ -3,15 +3,6 @@ import math
 from strategy import bounty_finder
 
 
-def clamp(val, a, b):
-    if val < a:
-        val = a
-    elif val > b:
-        val = b
-
-    return val
-
-
 def clamp_vector(vec: dict, size):
     magnitude = math.sqrt(vec["x"] ** 2 + vec["y"] ** 2)
 
@@ -29,9 +20,13 @@ def acceleration(frame: dict, transport: dict, enemies_nearby: list):
              "y": frame["mapSize"]["y"] / 2 - transport["y"]}
 
     bounty_for_transport = bounty_finder.get_closest_bounty(frame["bounties"], frame["transports"])
-    if bounty_for_transport[transport["id"]]["x"] is not None:
+    if bounty_for_transport[transport["id"]]['x'] is not None:
         accel['x'] = bounty_for_transport[transport["id"]]['x'] - transport['x']
         accel['y'] = bounty_for_transport[transport["id"]]['y'] - transport['y']
+
+    # cancel anomaly effects
+    accel['x'] -= transport["anomalyAcceleration"]['x']
+    accel['y'] -= transport["anomalyAcceleration"]['y']
 
     # overwrite accel if we close to wall  
     if transport["x"] + transport["velocity"]["x"] > frame["mapSize"]["x"] * 0.95:
