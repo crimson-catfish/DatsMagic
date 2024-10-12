@@ -12,9 +12,9 @@ def get_closest_bounty(bounties: dict, transports: dict) -> dict:
         y = transport["y"]
         for bounty in bounties:
             vector = [bounty["x"] - x, bounty["y"] - y]
-            if vector[0]**2 + vector[1]**2 < vector_length_squared:
+            if vector[0] ** 2 + vector[1] ** 2 < vector_length_squared:
                 bounty_x = bounty["x"]
                 bounty_y = bounty["y"]
-                vector_length_squared = vector[0]**2 + vector[1]**2
-        bounty_for_carpet[transports[0]["id"]] = [bounty_x, bounty_y]
+                vector_length_squared = vector[0] ** 2 + vector[1] ** 2
+        bounty_for_carpet[transport["id"]] = [bounty_x, bounty_y]
     return bounty_for_carpet
