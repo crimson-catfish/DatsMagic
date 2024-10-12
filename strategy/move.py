@@ -36,11 +36,11 @@ def acceleration(frame: dict, transport: dict, enemies_nearby: list):
         if enemy_nearby["sqr_distance"] > (transport["velocity"]["x"] ** 2 + transport["velocity"]["y"] ** 2) * 10:
             continue
 
-        transport_predicted_position = {"x": transport["x"] + transport["velocity"]["x"] * 2,
-                                        "y": transport["y"] + transport["velocity"]["y"] * 2}
+        transport_predicted_position = {"x": transport["x"] + transport["velocity"]["x"],
+                                        "y": transport["y"] + transport["velocity"]["y"]}
 
-        enemy_predicted_position = {"x": enemy_nearby["enemy"]["x"] + (enemy_nearby["enemy"]["velocity"]["x"] * 2),
-                                    "y": enemy_nearby["enemy"]["y"] + (enemy_nearby["enemy"]["velocity"]["y"] * 2)}
+        enemy_predicted_position = {"x": enemy_nearby["enemy"]["x"] + (enemy_nearby["enemy"]["velocity"]["x"]),
+                                    "y": enemy_nearby["enemy"]["y"] + (enemy_nearby["enemy"]["velocity"]["y"])}
 
         sqr_predicted_distance = (transport_predicted_position["x"] - enemy_predicted_position["x"]) ** 2 + (
                 transport_predicted_position["y"] - enemy_predicted_position["y"]) ** 2
