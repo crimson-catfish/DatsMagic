@@ -17,7 +17,7 @@ def clamp_vector(vec: dict, size):
 def acceleration(frame: dict, transport: dict, enemies_nearby: list):
     # move to center by default
     center = {"x": frame["mapSize"]["x"] / 2 - transport["x"], "y": frame["mapSize"]["y"] / 2 - transport["y"]}
-    clamped_center = clamp_vector(center, frame["maxSpeed"] * 0.1)
+    clamped_center = clamp_vector(center, frame["maxSpeed"] * 0.3)
     accel = {"x": clamped_center["x"] - transport["velocity"]["x"],
              "y": clamped_center["y"] - transport["velocity"]["y"]}
 
