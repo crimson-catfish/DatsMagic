@@ -18,7 +18,7 @@ def clamp_vector(vec: dict, size):
 def acceleration(frame: dict, transport: dict, enemies_nearby: list):
     # move to center by default
     center = {"x": frame["mapSize"]["x"] / 2 - transport["x"], "y": frame["mapSize"]["y"] / 2 - transport["y"]}
-    clamped_center = clamp_vector(center, frame["maxSpeed"] * 0.3)
+    clamped_center = clamp_vector(center, frame["maxSpeed"] * 0.2)
     accel = {"x": clamped_center["x"] - transport["velocity"]["x"],
              "y": clamped_center["y"] - transport["velocity"]["y"]}
 
@@ -46,8 +46,8 @@ def acceleration(frame: dict, transport: dict, enemies_nearby: list):
                 transport_predicted_position["y"] - enemy_predicted_position["y"]) ** 2
 
         if sqr_predicted_distance < 2500:
-            accel["x"] = transport["x"] - enemy_predicted_position["x"] - transport["velocity"]["x"]
-            accel["y"] = transport["y"] - enemy_predicted_position["y"] - transport["velocity"]["y"]
+            accel["x"] = transport["x"] - enemy_predicted_position["x"] * 3 - transport["velocity"]["x"]
+            accel["y"] = transport["y"] - enemy_predicted_position["y"] * 3 - transport["velocity"]["y"]
 
     # overwrite accel if we close to wall  
     if transport["x"] + transport["velocity"]["x"] > frame["mapSize"]["x"] * 0.95:
