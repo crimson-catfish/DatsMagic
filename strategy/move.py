@@ -13,8 +13,12 @@ def clamp(val, a, b):
     return val
 
 
-def scale_vector(vec: dict, size):
+def clamp_vector(vec: dict, size):
     magnitude = math.sqrt(vec["x"] ** 2 + vec["y"] ** 2)
+
+    if magnitude <= size:
+        return vec
+
     normalized_direction = {"x": vec["x"] / magnitude, "y": vec["y"] / magnitude}
 
     return {"x": int(normalized_direction["x"] * size), "y": int(normalized_direction["y"] * size)}
@@ -38,4 +42,4 @@ def acceleration(frame: dict, transport: dict, enemies_nearby: list):
     elif transport["y"] + transport["velocity"]["y"] < frame["mapSize"]["y"] * 0.05:
         accel["y"] = frame["maxAccel"]
 
-    return scale_vector(accel, frame["maxAccel"])
+    return clamp_vector(accel, frame["maxAccel"])
