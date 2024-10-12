@@ -24,8 +24,8 @@ def acceleration(frame: dict, transport: dict, enemies_nearby: list):
 
     bounty_for_transport = bounty_finder.get_closest_bounty(frame["bounties"], frame["transports"])
     if bounty_for_transport[transport["id"]]['x'] is not None:
-        accel['x'] = bounty_for_transport[transport["id"]]['x'] - transport['x'] - transport["velocity"]["x"]
-        accel['y'] = bounty_for_transport[transport["id"]]['y'] - transport['y'] - transport["velocity"]["y"]
+        accel['x'] = bounty_for_transport[transport["id"]]['x'] - transport['x'] - transport["velocity"]["x"] * 2
+        accel['y'] = bounty_for_transport[transport["id"]]['y'] - transport['y'] - transport["velocity"]["y"] * 2
 
     # cancel anomaly effects
     accel['x'] -= transport["anomalyAcceleration"]['x']
