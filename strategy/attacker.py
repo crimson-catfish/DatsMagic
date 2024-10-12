@@ -1,7 +1,5 @@
 import math
 
-from gi.overrides.keysyms import target
-
 
 # simplest aim - hit low hp enemy and don't shoot yourself
 # TODO: make it's copy and implement more complicated aim strategy like shooting someone more than one hit hp, and taking bounty to credit 
@@ -38,7 +36,7 @@ def aim_one_hit(frame: dict, transport: dict, enemies_nearby: list):
         # all below is to avoid shooting self
 
         return {"x": int(transport["x"] + normalized_direction["x"] * frame["attackExplosionRadius"] * 1.01),
-                "y": int(transport["y"] + normalized_direction["y"] * frame["attackExplosionRadius"]             * 1.01)}
+                "y": int(transport["y"] + normalized_direction["y"] * frame["attackExplosionRadius"] * 1.01)}
 
     # if enemy too far
     if target_nearby["sqr_distance"] > frame["attackRange"] ** 2:
