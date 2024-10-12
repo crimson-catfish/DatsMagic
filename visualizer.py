@@ -1,16 +1,5 @@
 import rewind_client, sys, os, json
 
-CARPET_SIZE = 5
-
-
-def clamp(val, a, b):
-    if val < a:
-        val = a
-    elif val > b:
-        val = b
-
-    return val
-
 
 class Visualizer:
     def __init__(self, map_size: dict):
