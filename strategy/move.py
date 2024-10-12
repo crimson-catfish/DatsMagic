@@ -18,8 +18,8 @@ def acceleration(frame: dict, transport: dict, enemies_nearby: list):
     dir_x = bounty_for_transport[transport["id"]]['x'] - transport['x']
     dir_y = bounty_for_transport[transport["id"]]['y'] - transport['y']
 
-    accel['x'] = clamp(dir_x,  -frame["maxAccel"],  frame["maxAccel"])
-    accel['y'] = clamp(dir_y,  -frame["maxAccel"],  frame["maxAccel"])
+    accel['x'] = clamp(dir_x,  -5,  5)
+    accel['y'] = clamp(dir_y,  -5,  5)
 
     # overwrite accel if we close to wall  
     if transport["x"] + transport["velocity"]["x"] > frame["mapSize"]["x"] * 0.95:
