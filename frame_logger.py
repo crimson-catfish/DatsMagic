@@ -15,6 +15,5 @@ class Logger:
         self.first = False
 
     def __del__(self):
-        self.file       
         self.file.write("\n]}")
         self.file.close()
