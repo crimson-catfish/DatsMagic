@@ -27,3 +27,5 @@ while True:
     command = strategy.commander.process_all_transports(frame)
 
     frame = api.send_command(command)
+    if len(frame["errors"]) > 0: 
+        print(frame["errors"])
