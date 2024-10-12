@@ -85,6 +85,18 @@ class Visualizer:
                                  bounty['y'],
                                  30, "points: " + str(bounty["points"]))
 
+    def draw_shields(self, enemies, transports, transport_radius):
+        for enemy in enemies:
+            if enemy['shieldLeftMs'] > 0:
+                self.rc.circle(enemy['x'], enemy['y'], transport_radius + 1, self.rc.RED)
+                self.rc.circle_popup(enemy['x'], enemy['y'], 30, "enemy shield: " + str(enemy["shieldLeftMs"]))
+
+        for transport in transports:
+            if transport['shieldLeftMs'] > 0:
+                self.rc.circle(transport['x'], transport['y'], transport_radius + 1, self.rc.GREEN)
+                self.rc.circle_popup(transport['x'], transport['y'], 30, "ally shield: " + str(transport["shieldLeftMs"]))
+
+
     def draw_frame(self, frame_to_draw: dict):
         self.draw_constants(frame_to_draw)
         self.draw_bounty_howmany(frame_to_draw["bounties"])
@@ -94,6 +106,7 @@ class Visualizer:
         self.draw_enemies(frame_to_draw["enemies"], frame_to_draw["transportRadius"])
         self.draw_transports(frame_to_draw["transports"], frame_to_draw["transportRadius"],
                              frame_to_draw["attackRange"])
+        self.draw_shields(frame_to_draw["enemies"], frame_to_draw["transports"], frame_to_draw["transportRadius"])
         self.rc.end_frame()
 
 # draw from file if file name was provided in args
