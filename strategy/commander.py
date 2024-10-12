@@ -1,9 +1,9 @@
-import move
-from strategy import enemies_finder, shield, attacker
+from strategy import enemies_finder, shield, attacker, move
+
 
 # may get paralleled for 5 transports 
-def process_all_transports(frame: dict) -> list:
-    command = []
+def process_all_transports(frame: dict) -> dict:
+    command = {"transports": []}
 
     for transport in frame["transports"]:
         if transport["status"] == "dead":
@@ -26,6 +26,6 @@ def process_all_transports(frame: dict) -> list:
         if acceleration is not None:
             transport_command["acceleration"] = acceleration
 
-        command.append(transport_command)
+        command["transports"].append(transport_command)
 
     return command

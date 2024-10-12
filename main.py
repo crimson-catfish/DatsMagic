@@ -1,4 +1,4 @@
-import api, frame_logger, visualizer, error_checker, strategy
+import api, frame_logger, visualizer, error_checker, strategy.commander
 
 test_or_not = True
 
