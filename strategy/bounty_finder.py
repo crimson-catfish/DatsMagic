@@ -7,7 +7,7 @@ def get_closest_bounty(bounties: dict, transports: dict) -> dict:
     for transport in transports:
         bounty_x = None
         bounty_y = None
-        vector_length_squared = 10000
+        vector_length_squared = 100000
         x = transport["x"]
         y = transport["y"]
         for bounty in bounties:
