@@ -20,6 +20,7 @@ def process_all_transports(frame: dict) -> dict:
 
         attack = attacker.aim_one_hit(frame, transport, enemies_nearby_transport)
         if attack is not None:
+            print(attack)
             transport_command["attack"] = attack
 
         acceleration = move.acceleration(frame, transport, enemies_nearby_transport)
