@@ -26,14 +26,28 @@ def acceleration(frame: dict, transport: dict, enemies_nearby: list):
     if bounty_for_transport[transport["id"]]['x'] is not None:
         accel['x'] = bounty_for_transport[transport["id"]]['x'] - transport['x'] - transport["velocity"]["x"]
         accel['y'] = bounty_for_transport[transport["id"]]['y'] - transport['y'] - transport["velocity"]["y"]
-    #     
-    # anomalies_on_the_way = anomaly_finder.get_anomalies_on_the_way(frame, transport)
-    # if anomalies_on_the_way is not None:
-    #     pass
 
     # cancel anomaly effects
     accel['x'] -= transport["anomalyAcceleration"]['x']
     accel['y'] -= transport["anomalyAcceleration"]['y']
+
+    for enemy_nearby in enemies_nearby:
+        # ignore enemies too far
+        if enemy_nearby["sqr_distance"] > (transport["velocity"]["x"] ** 2 + transport["velocity"]["y"] ** 2) * 10:
+            continue
+
+        transport_predicted_position = {"x": transport["x"] + transport["velocity"]["x"] * 2,
+                                        "y": transport["y"] + transport["velocity"]["y"] * 2}
+
+        enemy_predicted_position = {"x": enemy_nearby["enemy"]["x"] + (enemy_nearby["enemy"]["velocity"]["x"] * 2),
+                                    "y": enemy_nearby["enemy"]["y"] + (enemy_nearby["enemy"]["velocity"]["y"] * 2)}
+
+        sqr_predicted_distance = (transport_predicted_position["x"] - enemy_predicted_position["x"]) ** 2 + (
+                transport_predicted_position["y"] - enemy_predicted_position["y"]) ** 2
+
+        if sqr_predicted_distance < 2500:
+            accel["x"] = transport["x"] - enemy_predicted_position["x"] - transport["velocity"]["x"]
+            accel["y"] = transport["y"] - enemy_predicted_position["y"] - transport["velocity"]["y"]
 
     # overwrite accel if we close to wall  
     if transport["x"] + transport["velocity"]["x"] > frame["mapSize"]["x"] * 0.95:
