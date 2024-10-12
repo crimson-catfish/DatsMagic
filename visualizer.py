@@ -68,9 +68,15 @@ class Visualizer:
         self.rc.message("maxSpeed" + ': ' + str(frame["maxSpeed"]))
         self.rc.message("points" + ': ' + str(frame["points"]))
 
+    def draw_bounty_howmany(self, bounties):
+        for bounty in bounties:
+            self.rc.circle_popup(bounty['x'],
+                                 bounty['y'],
+                                 30, "points: " + str(bounty["points"]))
 
     def draw_frame(self, frame_to_draw: dict):
         self.draw_constants(frame_to_draw)
+        self.draw_bounty_howmany(frame_to_draw["bounties"])
         self.draw_hp(frame_to_draw["transports"], frame_to_draw["enemies"])
         self.draw_bounties(frame_to_draw["bounties"])
         self.draw_anomalies(frame_to_draw["anomalies"])
