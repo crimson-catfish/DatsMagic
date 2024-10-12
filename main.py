@@ -24,7 +24,6 @@ while True:
     logger.log(frame)
     vs.draw_frame(frame)
 
-    # TODO: test this
     command = strategy.commander.process_all_transports(frame)
 
     frame = api.send_command(command)
